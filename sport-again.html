@@ -740,7 +740,7 @@ function card(p){
   const inCart = cart.includes(p.id);
   const pct = Math.round((1-p.price/p.was)*100);
   return `<a class="card" href="#produit-${p.id}">
-    <div class="ph">${drawing(p)}${stateBadge(p.st)}<span class="save num">−${pct} %</span></div>
+    <div class="ph">${drawing(p, LIEU.has(p.id)?'lieu':'face')}${stateBadge(p.st)}<span class="save num">−${pct} %</span></div>
     <div class="body">
       <span class="sub">${SPORTS[p.sport]} · ${p.size}</span>
       <h3>${p.name}</h3>
