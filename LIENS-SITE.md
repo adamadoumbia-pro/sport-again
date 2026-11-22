@@ -4,10 +4,7 @@
 https://adamadoumbia-pro.github.io/sport-again/
 
 - Dépôt GitHub : https://github.com/adamadoumbia-pro/sport-again
-- Mis en ligne le 11/11/2026 (commit f188dc6).
-- Attention : cette version ne contient pas encore les dernières modifications
-  (photos « En situation », section « En conditions réelles »). Il faut pousser
-  les changements sur GitHub pour la mettre à jour.
+- Dernière mise à jour : 22/11/2026 (photos en conditions réelles + icône d'onglet Sport Again).
 
 ## Version la plus récente (artifact Claude, partagé par lien)
 https://claude.ai/artifact/9pHCeFqxNCEugneBEtggVx
