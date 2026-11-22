@@ -382,6 +382,44 @@ details.acc .a{padding:0 0 18px;color:var(--muted);max-width:68ch}
 .objection p{color:var(--muted);font-size:15px}
 .card-form{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:28px}
 
+/* Échange avec le vendeur : questions et offres (démo) */
+.ask-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.ask-row .btn{min-height:44px;font-size:15px;padding:6px 12px;min-width:0;white-space:normal;text-align:center;line-height:1.15}
+.ask-row .btn svg{flex:none}
+.deal-note{display:flex;gap:10px;align-items:center;background:var(--soft);border:1.5px solid var(--primary);border-radius:14px;padding:12px 14px;font-size:14px}
+.deal-note .ic{width:20px;height:20px;color:var(--primary);flex:none}
+.seller-box .dh .who{display:flex;gap:12px;align-items:center;min-width:0}
+.seller-box .dh .av{width:40px;height:40px;border-radius:50%;background:var(--primary);color:var(--on-primary);display:grid;place-items:center;font:800 15px/1 var(--f-display);flex:none}
+.seller-box .dh b{font:700 16px/1.2 var(--f-display);display:block}
+.seller-box .dh small{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.seller-box .dh small i{width:8px;height:8px;border-radius:50%;background:#3DDC84}
+.seller-box .db{display:flex;flex-direction:column;gap:10px}
+.sb-item{display:grid;grid-template-columns:64px 1fr;gap:10px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:8px}
+.sb-item .mini{position:relative;aspect-ratio:4/3;border-radius:8px;overflow:hidden}
+.sb-item b{font:700 14px/1.2 var(--f-display);display:block}
+.sb-item span{font-size:13px;color:var(--muted)}
+.sb-demo{font-size:12px;color:var(--muted);text-align:center;padding:4px 8px;border:1px dashed var(--line);border-radius:10px}
+.msg.sys{align-self:center;max-width:95%;background:transparent;border:0;color:var(--muted);font-size:13px;text-align:center;padding:2px 8px}
+.offer-b{align-self:flex-end;max-width:85%;background:var(--surface);border:2px solid var(--primary);border-radius:16px;padding:10px 14px;display:grid;gap:2px}
+.offer-b small{font-size:12px;color:var(--muted)}
+.offer-b b{font:800 22px/1.1 var(--f-display)}
+.offer-b.seller{align-self:flex-start;border-color:var(--orange)}
+.offer-b .acts{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+.offer-b .acts .btn{min-height:38px;font-size:14px;padding:0 14px}
+.sb-tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:var(--bg);border-radius:999px;padding:4px}
+.sb-tabs button{border:0;background:transparent;border-radius:999px;min-height:38px;font:700 14px/1 var(--f-display);color:var(--muted);cursor:pointer}
+.sb-tabs button[aria-pressed="true"]{background:var(--surface);color:var(--fg);box-shadow:var(--shadow)}
+.sb-form{display:flex;gap:8px}
+.sb-form input{flex:1;min-width:0;height:46px;border-radius:999px;border:1.5px solid var(--line);background:var(--bg);color:var(--fg);padding:0 16px;font:400 16px var(--f-text)}
+.sb-form input:focus{outline:none;border-color:var(--primary)}
+.sb-form .send{width:46px;height:46px;border-radius:50%;border:0;background:var(--orange);color:#fff;cursor:pointer;display:grid;place-items:center;flex:none}
+.sb-form .send .ic{width:20px;height:20px}
+.sb-chips{display:flex;gap:6px;flex-wrap:wrap}
+.sb-chips button{border:1.5px solid var(--primary);background:var(--surface);color:var(--fg);border-radius:999px;padding:7px 12px;font:600 13px/1 var(--f-text);cursor:pointer}
+.sb-chips button:hover{background:var(--soft)}
+.sb-hint{font-size:12px;color:var(--muted)}
+.cart-was{font-size:12px;color:var(--muted);text-decoration:line-through;display:block;text-align:right}
+
 /* Tiroir panier */
 .scrim{position:fixed;inset:0;background:rgba(6,46,34,.45);z-index:80;opacity:0;pointer-events:none;transition:opacity .3s}
 .scrim.on{opacity:1;pointer-events:auto}
@@ -410,7 +448,9 @@ details.acc .a{padding:0 0 18px;color:var(--muted);max-width:68ch}
 
 /* Toast */
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,140%);z-index:100;background:var(--nuit);color:#fff;border-radius:999px;padding:12px 14px 12px 18px;display:flex;gap:12px;align-items:center;font:500 15px var(--f-text);box-shadow:0 12px 30px rgba(0,0,0,.3);transition:transform .35s cubic-bezier(.2,.8,.2,1);max-width:calc(100% - 32px)}
-.toast.on{transform:translate(-50%,0)}
+.toast{width:max-content;max-width:calc(100vw - 32px)}
+.toast:not(.on){opacity:0;visibility:hidden;pointer-events:none;transition:transform .3s,opacity .2s,visibility 0s .3s}
+.toast.on{transform:translate(-50%,0);opacity:1;visibility:visible}
 .toast button{border:0;background:var(--podium);color:#3A2A00;border-radius:999px;padding:8px 12px;font:700 13px var(--f-display);cursor:pointer;white-space:nowrap}
 @media (max-width:860px){.toast{bottom:calc(84px + env(safe-area-inset-bottom,0px))}}
 
@@ -553,6 +593,11 @@ footer .legal{border-top:1px solid rgba(255,255,255,.12);margin-top:32px;padding
   <div class="dh"><h3 id="drawerTitle">Ton panier</h3><button class="icon-btn" id="closeDrawer" aria-label="Fermer le panier"><svg class="ic"><use href="#i-x"/></svg></button></div>
   <div class="db" id="drawerBody"></div>
   <div class="df" id="drawerFoot"></div>
+</aside>
+<aside class="drawer seller-box" id="sellerBox" aria-label="Échange avec le vendeur" aria-hidden="true">
+  <div class="dh"><div class="who"><span class="av" id="sbAv">SA</span><div><b id="sbName">Vendeur</b><small><i></i>Revendeur vérifié · répond en général en 1 h</small></div></div><button class="icon-btn" id="sbClose" aria-label="Fermer l’échange avec le vendeur"><svg class="ic"><use href="#i-x"/></svg></button></div>
+  <div class="db" id="sbLog" aria-live="polite"></div>
+  <div class="df" id="sbFoot"></div>
 </aside>
 
 <button class="chat-fab" id="chatFab" type="button" aria-label="Ouvrir l’assistant Sport Again" aria-expanded="false" aria-controls="chat"><svg class="ic" style="width:28px;height:28px"><use href="#i-chat"/></svg><span class="badge" aria-hidden="true">1</span></button>
@@ -935,6 +980,11 @@ V.produit = (id) => {
           <button class="btn btn-primary btn-block" type="button" id="addMain" data-add="${p.id}">${inCart?ico('check')+'Dans ton panier':'Ajouter au panier'}</button>
           <a class="btn btn-ghost" href="#alerte-${p.sport}" title="Alerte taille" aria-label="Créer une alerte taille">${ico('bell')}</a>
         </div>
+        ${dealNote(p)}
+        <div class="ask-row">
+          <button class="btn btn-ghost" type="button" data-seller="question">${ico('chat')}Poser une question</button>
+          <button class="btn btn-ghost" type="button" data-seller="offre">${ico('tag')}Faire une offre</button>
+        </div>
         ${trustBadges()}
         <div>
           <details class="acc" open><summary>Caractéristiques<span class="pm">${ico('plus')}</span></summary><dl class="specs a">${Object.entries(p.specs).map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl></details>
@@ -1136,7 +1186,7 @@ function addToCart(id){
   });
   toast(`Ajouté : ${p.name}, ${eur(p.price)}`);
 }
-function totals(){ const sub=cart.reduce((s,id)=>s+byId(id).price,0); const ship=delivery==='colis'&&cart.length?6.9:0; return {sub,ship,tot:sub+ship}; }
+function totals(){ const sub=cart.reduce((s,id)=>s+effPrice(byId(id)),0); const ship=delivery==='colis'&&cart.length?6.9:0; return {sub,ship,tot:sub+ship}; }
 function renderDrawer(){
   const body=document.getElementById('drawerBody'), foot=document.getElementById('drawerFoot'), title=document.getElementById('drawerTitle');
   const prog = n => `<div class="progress" aria-hidden="true">${[1,2,3].map(i=>`<i class="${i<=n?'on':''}"></i>`).join('')}</div>`;
@@ -1155,7 +1205,7 @@ function renderDrawer(){
   }
   if(step==='cart'){
     title.textContent=`Ton panier (${cart.length})`;
-    body.innerHTML=prog(1)+cart.map(id=>{const p=byId(id);return `<div class="line"><a class="mini" href="#produit-${p.id}" data-close>${drawing(p,'face','')}</a><div style="min-width:0"><b>${p.name}</b><span class="sub">${STATES[p.st][0]} · ${p.size} · ${SELLERS[p.seller].name}</span><br><button class="rm" type="button" data-rm="${p.id}">Retirer</button></div><span class="price num" style="font-size:17px">${eur(p.price)}</span></div>`}).join('')+trustBadges(false);
+    body.innerHTML=prog(1)+cart.map(id=>{const p=byId(id);return `<div class="line"><a class="mini" href="#produit-${p.id}" data-close>${drawing(p,'face','')}</a><div style="min-width:0"><b>${p.name}</b><span class="sub">${STATES[p.st][0]} · ${p.size} · ${SELLERS[p.seller].name}</span><br><button class="rm" type="button" data-rm="${p.id}">Retirer</button></div><span class="price num" style="font-size:17px">${eur(effPrice(p))}${effPrice(p)<p.price?`<small class="cart-was">${eur(p.price)}</small>`:''}</span></div>`}).join('')+trustBadges(false);
     foot.innerHTML=`<div class="tot"><span>Sous-total</span><b class="num">${eur2(t.sub)}</b></div><button class="btn btn-primary" type="button" data-step="ship">Passer commande</button>`;
   } else if(step==='ship'){
     title.textContent='Livraison';
@@ -1171,9 +1221,10 @@ function renderDrawer(){
     foot.innerHTML=`<div class="tot big"><span>Total</span><span class="num">${eur2(t.tot)}</span></div><div style="display:grid;grid-template-columns:auto 1fr;gap:10px"><button class="btn btn-ghost" type="button" data-step="ship">Retour</button><button class="btn btn-orange" type="button" data-step="done">Simuler le paiement</button></div>`;
   }
 }
-function openDrawer(){ closeChat(); if(step==='done') step='cart'; renderDrawer(); drawer.classList.add('on'); drawer.setAttribute('aria-hidden','false'); scrim.classList.add('on'); scrimFor='drawer'; setTimeout(()=>document.getElementById('closeDrawer').focus(),50); }
+function openDrawer(){ closeChat(); sellerBox.classList.remove('on'); sellerBox.setAttribute('aria-hidden','true'); if(step==='done') step='cart'; renderDrawer(); drawer.classList.add('on'); drawer.setAttribute('aria-hidden','false'); scrim.classList.add('on'); scrimFor='drawer'; setTimeout(()=>document.getElementById('closeDrawer').focus(),50); }
 function closeOverlays(){
   drawer.classList.remove('on'); drawer.setAttribute('aria-hidden','true'); scrim.classList.remove('on');
+  sellerBox.classList.remove('on'); sellerBox.setAttribute('aria-hidden','true');
   document.getElementById('filters')?.classList.remove('open'); scrimFor=null;
   if(step==='done'){ cart=[]; saveCart(); step='cart'; render(); }
 }
@@ -1193,6 +1244,122 @@ document.getElementById('cartTab').addEventListener('click',openDrawer);
 document.getElementById('closeDrawer').addEventListener('click',closeOverlays);
 scrim.addEventListener('click',closeOverlays);
 document.addEventListener('keydown',e=>{ if(e.key==='Escape' && scrimFor) closeOverlays(); });
+
+/* ---------- Échange avec le vendeur (démo : réponses simulées, gardées dans ce navigateur) ---------- */
+const DEAL_HOURS = 24;
+function dealOf(id){ const d=store.get('deal_'+id,null); return d && d.until>Date.now() ? d : null; }
+function effPrice(p){ const d=dealOf(p.id); return d ? d.price : p.price; }
+function dealNote(p){ const d=dealOf(p.id); if(!d) return '';
+  const h=Math.max(1,Math.round((d.until-Date.now())/36e5));
+  return `<div class="deal-note">${ico('check')}<span><b>Offre acceptée : ${eur(d.price)}</b> au lieu de ${eur(p.price)}. Ajoute l’article au panier pour en profiter, encore ${h} h.</span></div>`; }
+const sellerBox=document.getElementById('sellerBox'), sbLog=document.getElementById('sbLog'), sbFoot=document.getElementById('sbFoot');
+let sbProd=null, sbMode='question', sbBusy=false;
+const convKey=id=>'conv_'+id;
+const initials=n=>n.split(/\s+/).filter(w=>/^[A-ZÀ-Ý]/.test(w)).slice(0,2).map(w=>w[0]).join('')||'SA';
+function maskContact(t){ let hit=false;
+  t=t.replace(/[\w.+-]+@[\w-]+\.[\w.]+/g,()=>{hit=true;return '[e-mail masqué]'}).replace(/(?:\+33|0)\s*[1-9](?:[\s.-]*\d{2}){4}/g,()=>{hit=true;return '[numéro masqué]'});
+  return [t,hit]; }
+function sbAdd(item, save=true){
+  const p=sbProd, el=document.createElement('div');
+  if(item.t==='offer'){
+    el.className='offer-b'+(item.by==='seller'?' seller':'');
+    const lbl=item.by==='seller'?'Contre-offre du vendeur':'Ton offre';
+    el.innerHTML=`<small>${lbl}</small><b>${eur(item.price)}</b><small>Prix affiché : ${eur(p.price)}</small>`+
+      (item.by==='seller' && item.open ? `<div class="acts"><button class="btn btn-primary" type="button" data-counter="ok" data-price="${item.price}">Accepter</button><button class="btn btn-ghost" type="button" data-counter="no">Refuser</button></div>`:'');
+  } else { el.className='msg '+(item.by==='me'?'me':item.by==='sys'?'sys':'bot'); el.innerHTML=item.html; }
+  sbLog.appendChild(el); sbLog.scrollTop=sbLog.scrollHeight;
+  if(save){ const c=store.get(convKey(p.id),[]); c.push(item); store.set(convKey(p.id),c); }
+}
+function sbReply(items){
+  sbBusy=true; const ty=document.createElement('div'); ty.className='msg bot typing'; ty.innerHTML='<i></i><i></i><i></i>'; sbLog.appendChild(ty); sbLog.scrollTop=sbLog.scrollHeight;
+  setTimeout(()=>{ ty.remove(); items.forEach(i=>sbAdd(i)); sbBusy=false; renderSbFoot(); }, 1100+Math.random()*700);
+}
+function sellerAnswer(p,q){
+  const s=SELLERS[p.seller], t=q.toLowerCase();
+  const has=(...k)=>k.some(w=>t.includes(w));
+  if(has('dispo','encore','toujours','vendu')) return `Oui, il est toujours disponible. Je peux te le mettre de côté 24 h si tu veux passer le voir chez ${s.name} (${s.area}).`;
+  if(has('essa','voir','passer','boutique','magasin','retrait')) return `Avec plaisir : passe chez ${s.name}, ${s.area}. Tu peux l’essayer sur place et le retrait est gratuit.`;
+  if(has('taille','pointure','grand','petit','mesure','cm')) return `Taille ${p.size}. ${Object.entries(p.specs).slice(0,2).map(([k,v])=>`${k} : ${v}`).join(', ')}. Dis-moi ta taille et je te dis si ça colle.`;
+  if(has('état','etat','défaut','defaut','rayure','abîm','abim','usé','use')) return `État ${p.st}/4 (${STATES[p.st][0].toLowerCase()}). ${p.note} Tout est visible en gros plan sur les photos.`;
+  if(has('livr','envoi','colis','délai','delai')) return `Envoi sous 48 h en Colissimo (6,90 €), ou retrait gratuit en boutique, ${s.area}.`;
+  if(has('prix','négo','nego','baisse','moins cher','remise','offre')) return `Tu peux me faire une offre avec l’onglet « Faire une offre » : je réponds tout de suite.`;
+  if(has('garantie','retour','rembours')) return `Tu as 14 jours pour le retourner, et l’article a été contrôlé en atelier avant la mise en vente.`;
+  return `Merci pour ta question ! Je vérifie et je te réponds au plus vite. En attendant, tout est détaillé sur la fiche (état, défauts, caractéristiques).`;
+}
+function sellerOffer(p,v){
+  const floor=Math.ceil(p.price*0.85), ok=Math.ceil(p.price*0.93);
+  if(v>=ok){ store.set('deal_'+p.id,{price:v,until:Date.now()+DEAL_HOURS*36e5});
+    return [{t:'msg',by:'seller',html:`C’est d’accord pour <b>${eur(v)}</b> ! L’offre est réservée pour toi pendant ${DEAL_HOURS} h : ajoute l’article au panier, le prix est déjà mis à jour.`},{t:'msg',by:'sys',html:'Offre acceptée · prix appliqué au panier'}]; }
+  if(v>=floor){ const c=Math.ceil((v+p.price)/2);
+    return [{t:'msg',by:'seller',html:`Je ne peux pas descendre jusqu’à ${eur(v)}, mais je te propose ceci :`},{t:'offer',by:'seller',price:c,open:true}]; }
+  return [{t:'msg',by:'seller',html:`Merci pour l’offre, mais c’est trop bas pour cet article contrôlé en atelier. Fais-moi une offre plus proche du prix affiché.`}];
+}
+function renderSbFoot(){
+  const p=sbProd; if(!p) return;
+  const offers=store.get(convKey(p.id),[]).filter(i=>i.t==='offer'&&i.by==='me').length, deal=dealOf(p.id);
+  const tabs=`<div class="sb-tabs" role="group" aria-label="Type de message"><button type="button" data-mode="question" aria-pressed="${sbMode==='question'}">Question</button><button type="button" data-mode="offre" aria-pressed="${sbMode==='offre'}">Faire une offre</button></div>`;
+  if(sbMode==='question'){
+    sbFoot.innerHTML=tabs+`<div class="sb-chips">${['Il est encore dispo ?','Je peux l’essayer en boutique ?','Ça taille comment ?','Tu peux m’en dire plus sur l’état ?'].map(q=>`<button type="button" data-q="${q}">${q}</button>`).join('')}</div>
+      <form class="sb-form" id="sbForm" autocomplete="off"><label for="sbInput" class="sr">Ton message au vendeur</label><input id="sbInput" maxlength="300" placeholder="Écris au vendeur…"><button class="send" type="submit" aria-label="Envoyer">${ico('arrow')}</button></form>`;
+  } else if(deal){
+    sbFoot.innerHTML=tabs+`<p class="sb-hint">Ton offre à <b>${eur(deal.price)}</b> est acceptée. Ajoute l’article au panier pour en profiter.</p><button class="btn btn-primary" type="button" data-sb-cart>Ajouter au panier à ${eur(deal.price)}</button>`;
+  } else if(offers>=3){
+    sbFoot.innerHTML=tabs+`<p class="sb-hint">Tu as fait 3 offres sur cet article : c’est le maximum. Tu peux encore poser une question au vendeur.</p>`;
+  } else {
+    const sugg=[5,10,15].map(x=>Math.round(p.price*(1-x/100)));
+    sbFoot.innerHTML=tabs+`<div class="sb-chips">${sugg.map((v,i)=>`<button type="button" data-o="${v}">${eur(v)} <span style="color:var(--muted)">(−${[5,10,15][i]} %)</span></button>`).join('')}</div>
+      <form class="sb-form" id="sbOffer" autocomplete="off"><label for="sbPrice" class="sr">Montant de ton offre en euros</label><input id="sbPrice" type="number" inputmode="numeric" min="1" max="${p.price}" step="1" placeholder="Ton prix en € (affiché ${eur(p.price)})"><button class="send" type="submit" aria-label="Envoyer l’offre">${ico('arrow')}</button></form>
+      <p class="sb-hint">Le vendeur accepte, refuse ou fait une contre-offre. ${3-offers} offre${3-offers>1?'s':''} possible${3-offers>1?'s':''}. Paiement uniquement sur Sport Again.</p>`;
+  }
+}
+function openSeller(id, mode){
+  const p=byId(id); if(!p) return; sbProd=p; sbMode=mode||'question';
+  closeChat(); drawer.classList.remove('on'); drawer.setAttribute('aria-hidden','true');
+  const s=SELLERS[p.seller];
+  document.getElementById('sbName').textContent=s.name; document.getElementById('sbAv').textContent=initials(s.name);
+  sbLog.innerHTML=`<div class="sb-item"><div class="mini">${drawing(p, LIEU.has(p.id)?'lieu':'face','')}</div><div><b>${p.name}</b><span>${eur(effPrice(p))} · ${STATES[p.st][0]} · ${p.size}</span></div></div><p class="sb-demo">Démo : les réponses du vendeur sont simulées et restent sur ton appareil.</p>`;
+  const c=store.get(convKey(p.id),[]);
+  if(!c.length) sbAdd({t:'msg',by:'seller',html:`Bonjour ! Ici ${s.name}. Une question sur cet article, ou une offre à me proposer ?`});
+  else c.forEach(i=>sbAdd(i,false));
+  renderSbFoot();
+  sellerBox.classList.add('on'); sellerBox.setAttribute('aria-hidden','false'); scrim.classList.add('on'); scrimFor='seller';
+  setTimeout(()=>document.getElementById(sbMode==='offre'?'sbPrice':'sbInput')?.focus(),350);
+}
+function sendQuestion(text){
+  text=text.trim(); if(!text||sbBusy) return; const p=sbProd;
+  const [clean,hit]=maskContact(text.replace(/[<>&]/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;'}[c])));
+  sbAdd({t:'msg',by:'me',html:clean});
+  if(hit) sbAdd({t:'msg',by:'sys',html:'Pour ta sécurité, les coordonnées sont masquées : l’échange et le paiement restent sur Sport Again.'});
+  sbReply([{t:'msg',by:'seller',html:sellerAnswer(p,text)}]);
+}
+function sendOffer(v){
+  const p=sbProd; v=Math.round(+v); if(sbBusy) return;
+  if(!v||v<1){ toast('Indique un montant en euros.'); return; }
+  if(v>=p.price){ toast('Ton offre est au prix affiché : ajoute simplement l’article au panier.'); return; }
+  const c=store.get(convKey(p.id),[]); c.forEach(i=>{ if(i.open) i.open=false; }); store.set(convKey(p.id),c);
+  sbLog.querySelectorAll('.offer-b .acts').forEach(a=>a.remove());
+  sbAdd({t:'offer',by:'me',price:v}); renderSbFoot();
+  sbReply(sellerOffer(p,v));
+  setTimeout(refreshDeal,2100);
+}
+function closeCounter(){ const c=store.get(convKey(sbProd.id),[]); c.forEach(i=>{ if(i.open) i.open=false; }); store.set(convKey(sbProd.id),c); sbLog.querySelectorAll('.offer-b .acts').forEach(a=>a.remove()); }
+function refreshDeal(){ if(sbProd && document.getElementById('addMain')){ const n=document.querySelector('.deal-note'); const h=dealNote(sbProd); if(n) n.outerHTML=h||''; else if(h) document.querySelector('.ask-row')?.insertAdjacentHTML('beforebegin',h); } }
+sellerBox.addEventListener('click',e=>{
+  const m=e.target.closest('[data-mode]'); if(m){ sbMode=m.dataset.mode; renderSbFoot(); return; }
+  const q=e.target.closest('[data-q]'); if(q){ sendQuestion(q.dataset.q); return; }
+  const o=e.target.closest('[data-o]'); if(o){ sendOffer(o.dataset.o); return; }
+  const k=e.target.closest('[data-counter]'); if(k){ const p=sbProd; closeCounter();
+    if(k.dataset.counter==='ok'){ const v=+k.dataset.price; store.set('deal_'+p.id,{price:v,until:Date.now()+DEAL_HOURS*36e5}); sbAdd({t:'msg',by:'me',html:`J’accepte ta contre-offre à ${eur(v)}.`}); sbReply([{t:'msg',by:'seller',html:`Parfait ! L’article est à <b>${eur(v)}</b> pour toi pendant ${DEAL_HOURS} h : ajoute-le au panier, le prix est déjà mis à jour.`},{t:'msg',by:'sys',html:'Offre acceptée · prix appliqué au panier'}]); setTimeout(refreshDeal,2000); }
+    else { sbAdd({t:'msg',by:'me',html:'Non merci, je refuse la contre-offre.'}); sbReply([{t:'msg',by:'seller',html:'Pas de souci ! Tu peux me refaire une offre quand tu veux.'}]); }
+    return; }
+  if(e.target.closest('[data-sb-cart]')){ const id=sbProd.id; closeOverlays(); if(!cart.includes(id)){ cart.push(id); saveCart(); refreshAddButtons(); } openDrawer(); return; }
+});
+sellerBox.addEventListener('submit',e=>{ e.preventDefault();
+  if(e.target.id==='sbForm'){ const i=document.getElementById('sbInput'); sendQuestion(i.value); i.value=''; }
+  if(e.target.id==='sbOffer'){ const i=document.getElementById('sbPrice'); sendOffer(i.value); }
+});
+document.getElementById('sbClose').addEventListener('click',closeOverlays);
+document.addEventListener('click',e=>{ const b=e.target.closest('[data-seller]'); if(!b) return; const id=location.hash.replace('#produit-',''); openSeller(id,b.dataset.seller); });
 
 /* ---------- Toast ---------- */
 let tt; const toastEl=document.getElementById('toast');
