@@ -661,8 +661,11 @@ const PHOTO = {
   'sac-golf':{},
   'chariot-golf':{pos:'30% 60%'}
 };
+/* Photos en conditions réelles (img/<id>-lieu.jpg) : affichées en premier sur la fiche */
+const LIEU = new Set(['velo-route-m','skis-170','driver-10-5','chaussures-ski-42','velo-enfant-20','vtt-29-l','fers-5-pw']);
 function drawing(p, view='face', cls='prod'){
   const ph = PHOTO[p.id]||{};
+  if(view==='lieu') return `<div class="pic ${cls}"><img src="img/${p.id}-lieu.jpg" alt="${p.name} : photo en conditions réelles" decoding="async"></div>`;
   let style = ph.pos?`object-position:${ph.pos};`:'';
   let extra = '';
   if(view==='tq'){ const o = ph.pt?`${ph.pt[0]}% ${ph.pt[1]}%`:'50% 50%'; style += `transform:scale(1.5);transform-origin:${o};`; }
@@ -908,16 +911,16 @@ V.acheter = () => `
 V.produit = (id) => {
   const p = byId(id); if(!p) return V.introuvable();
   const s = SELLERS[p.seller]; const pct=Math.round((1-p.price/p.was)*100);
-  const views = [['face','Vue d’ensemble'],['tq','Gros plan']]; if(p.defect && (PHOTO[p.id]||{}).pt) views.push(['detail','Détail du défaut']);
+  const views = [['face','Vue d’ensemble'],['tq','Gros plan']]; if(p.defect && (PHOTO[p.id]||{}).pt) views.push(['detail','Détail du défaut']); if(LIEU.has(p.id)) views.unshift(['lieu','En conditions réelles']);
   const similar = P.filter(x=>x.sport===p.sport && x.id!==p.id).slice(0,3);
   const inCart = cart.includes(p.id);
   return `<div class="view"><div class="wrap">
     <nav class="crumbs" aria-label="Fil d’Ariane"><a href="#accueil">Accueil</a><span>›</span><a href="#acheter" data-sport="${p.sport}">${SPORTS[p.sport]}</a><span>›</span><span>${p.name}</span></nav>
     <div class="pdp">
       <div class="gallery">
-        <div class="stage" id="stage">${drawing(p,'face')}<span class="cap" id="stageCap">Photo 1 : vue d’ensemble</span></div>
+        <div class="stage" id="stage">${drawing(p,views[0][0])}<span class="cap" id="stageCap">Photo 1 : ${views[0][1].toLowerCase()}</span></div>
         <div class="thumbs">${views.map(([v,l],i)=>`<button class="thumb" type="button" data-view="${v}" data-cap="Photo ${i+1} : ${l.toLowerCase()}" aria-pressed="${i===0}" aria-label="Photo ${i+1}, ${l}">${drawing(p,v,'')}<span>${i+1} · ${l}</span></button>`).join('')}</div>
-        <p class="small">${p.defect?'Le défaut noté est cadré en gros plan sur la photo 3.':'Aucun défaut à signaler sur cet exemplaire.'}</p>
+        <p class="small">${p.defect?`Le défaut noté est cadré en gros plan sur la photo ${Math.max(1,views.findIndex(v=>v[0]==='detail')+1)}.`:'Aucun défaut à signaler sur cet exemplaire.'}</p>
       </div>
       <div class="buy">
         <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">${stateBadge(p.st)}<span class="small">${SPORTS[p.sport]} · Taille ${p.size}</span></div>
